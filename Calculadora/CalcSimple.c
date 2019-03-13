@@ -47,10 +47,10 @@ int main (){
                  }
                  else if (formato==0){
                     char a, b, res;
-                    //F_LecturaBin(&a);
-                    //F_LecturaBin(&b);
-                    //res=F_OR_BI(&a, &b);
-                    printf("%c OR %c = %c\n", a, b, res);
+                    F_LecturaBin(&a);
+                    F_LecturaBin(&b);
+                    res=F_OR_BI(&a, &b);
+                    printf("%s OR %s = %s\n", a, b, res);
                  }
                  break;
 
@@ -67,27 +67,67 @@ int main (){
                  }
                  else if (formato==0){
                     char a, b, res;
-                    //F_LecturaBin(&a);
-                    //F_LecturaBin(&b);
-                    //res=F_AND_BI(&a, &b);
-                    printf("%c OR %c = %c\n", a, b, res);
+                    F_LecturaBin(&a);
+                    F_LecturaBin(&b);
+                    res=F_AND_BI(&a, &b);
+                    printf("%s OR %s = %s\n", a, b, res);
                  }                 
 
                 break;
 
              case 3:
                 //Llamar función xor;
+                 if (formato==1){
+                    int a, b, res;
+                    F_LecturaHex(&a);
+                    F_LecturaHex(&b);
+                    res=F_XOR_HX(&a, &b);
+                    printf("%x XOR %x = %x\n", a, b, res);
+
+                 }
+                 else if (formato==0){
+                    char a, b, res;
+                    F_LecturaBin(&a);
+                    F_LecturaBin(&b);
+                    res=F_OR_BI(&a, &b);
+                    printf("%s XOR %s = %s\n", a, b, res);
+                 }
 
                 break;
 
              case 4:
                  //Llamar función <<
+                 if (formato==1){
+                    int a, res;
+                    F_LecturaHex(&a);
+                    res=F_DIZ_HX(&a);
+                    printf("%x << = %x\n", a, res);
+
+                 }
+                 else if (formato==0){
+                    char a, res;
+                    F_LecturaBin(&a);
+                    res=F_DIZ_BI(&a);
+                    printf("%s << = %s\n", a, res);
+                 }
 
                  break;
 
              case 5:
                  //Llamar función >>
+                 if (formato==1){
+                    int a, res;
+                    F_LecturaHex(&a);
+                    res=F_DDE_HX(&a);
+                    printf("%x >> = %x\n", a, res);
 
+                 }
+                 else if (formato==0){
+                    char a, res;
+                    F_LecturaBin(&a);
+                    res=F_DDE_BI(&a);
+                    printf("%s >> = %s\n", a, res);
+                 }
                  break;
 
              case 6:
