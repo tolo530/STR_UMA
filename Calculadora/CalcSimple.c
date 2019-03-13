@@ -1,10 +1,14 @@
+//--------------------------------------------AUTOR: CARLOS BÁEZ RECIO--------------------------------------------
+//--------------------------------------------SISTEMAS EN TIEMPO REAL---------------------------------------------
+//------------------------------------------------CURSO 2018-2019-------------------------------------------------
+//---------------------------------------------PRINCIPAL CALCULADORA----------------------------------------------
+
 #include <stdio.h>
 #include "Mis_Funciones.h"
 
 int main (){
 
     int opcion;
-    int valor1, valor2, res;
     int formato=1; //Hexadecimal por defecto
 
     printf ("Introduce el tipo de operacion:\n"
@@ -31,37 +35,59 @@ int main (){
 
              case 1:
                  //Llamar función OR
-                 F_Lectura2(&valor1, &valor2);
-                 res=F_OR(&valor1, &valor2, &formato);
-                 printf("%d OR %d = %d\n", valor1, valor2, res);
+                 
+                 printf ("OR->Introduce A OR B\n");
+                 if (formato==1){
+                    int a, b, res;
+                    F_LecturaHex(&a);
+                    F_LecturaHex(&b);
+                    res=F_OR_HX(&a, &b);
+                    printf("%x OR %x = %x\n", a, b, res);
+
+                 }
+                 else if (formato==0){
+                    char a, b, res;
+                    //F_LecturaBin(&a);
+                    //F_LecturaBin(&b);
+                    //res=F_OR_BI(&a, &b);
+                    printf("%c OR %c = %c\n", a, b, res);
+                 }
                  break;
 
              case 2:
                  //Llamar función AND
-                 F_Lectura2(&valor1, &valor2);
-                 res=F_AND(&valor1, &valor2, &formato);
-                 printf("%d AND %d = %d\n", valor1, valor2, res);
+                 printf ("AND->Introduce A AND B\n");
+                 if (formato==1){
+                    int a, b, res;
+                    F_LecturaHex(&a);
+                    F_LecturaHex(&b);
+                    res=F_AND_HX(&a, &b);
+                    printf("%x AND %x = %x\n", a, b, res);
+
+                 }
+                 else if (formato==0){
+                    char a, b, res;
+                    //F_LecturaBin(&a);
+                    //F_LecturaBin(&b);
+                    //res=F_AND_BI(&a, &b);
+                    printf("%c OR %c = %c\n", a, b, res);
+                 }                 
+
                 break;
 
              case 3:
                 //Llamar función xor;
-                F_Lectura2(&valor1, &valor2);
-                res=F_XOR(&valor1, &valor2, &formato);
-                printf("%d XOR %d = %d\n", valor1, valor2, res);
+
                 break;
 
              case 4:
                  //Llamar función <<
-                 F_Lectura1(&valor1);
-                 res=F_DIZ(&valor1, &formato);
-                 printf("%d << = %d\n", valor1, res);
+
                  break;
 
              case 5:
                  //Llamar función >>
-                 F_Lectura1(&valor1);
-                 res=F_DDE(&valor1, &formato);
-                 printf("%d >> = %d\n", valor1, res);
+
                  break;
 
              case 6:

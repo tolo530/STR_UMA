@@ -1,8 +1,24 @@
-int F_OR(int* valor1, int* valor2, int* formato);         //Hace la operación OR de los parametros
-int F_AND(int* valor1, int* valor2, int* formato);        //Hace la operación AND de los parametros
-int F_XOR(int* valor1, int* valor2, int* formato);        //Hace la operación XOR de los parametros
-int F_DIZ(int* valor1, int* formato);                     //Desplaza a la izquerda el parametro
-int F_DDE(int* valor1, int* formato);                     //Desplaza a la derecha el parametro
-void F_CF(int* formato);                                  //Cambia un valor a otro formato (binario o hexadecimal)
-void F_Lectura1 (int *valor1);                            //Lee un valor
-void F_Lectura2 (int *valor1, int *valor2);               //Lee dos valores
+//--------------------------------------------AUTOR: CARLOS BÁEZ RECIO--------------------------------------------
+//--------------------------------------------SISTEMAS EN TIEMPO REAL---------------------------------------------
+//------------------------------------------------CURSO 2018-2019-------------------------------------------------
+
+//HEXADECIMALES
+int F_OR_HX(int* valor1, int* valor2);           //Hace la operación OR de los parametros hx
+int F_AND_HX(int* valor1, int* valor2);          //Hace la operación AND de los parametros hx
+//int F_XOR_HX(int* valor1, int* valor2);          //Hace la operación XOR de los parametros hx
+//int F_DIZ_HX(int* valor1);                       //Desplaza a la izquerda el parametro hx
+//int F_DDE_HX(int* valor1);                       //Desplaza a la derecha el parametro hx
+void F_LecturaHex (int *valor);                  //Lee un valor en formato hexadecimal
+
+//BINARIAS
+//int F_OR_BI(char* valor1, char* valor2);         //Hace la operación OR de los parametros bi
+//int F_AND_BI(char* valor1, char* valor2);        //Hace la operación AND de los parametros bi
+//int F_XOR_BI(char* valor1, char* valor2);        //Hace la operación XOR de los parametros bi
+//int F_DIZ_BI(char* valor1);                      //Desplaza a la izquerda el parametro bi
+//int F_DDE_BI(char* valor1);                      //Desplaza a la derecha el parametro bi
+//void F_LecturaBin (char *valor);                 //Lee un valor en formato binario
+
+//OTRAS
+void F_CF(int* formato);                         //Selecciona el tipo de formato con el que vamos a trabajar
+//int F_BinarioADec (char *valor);                 //Pasa de formato binario a formato decimal
+//char F_DecimalBin (int *valor);                  //Pasa de formato decimal a formato binario
