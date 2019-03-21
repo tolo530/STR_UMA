@@ -80,7 +80,7 @@ int main (){
                     F_LecturaBin(b);
 
                     res=F_AND_BI(a, b);
-                    printf("%s OR %s = %s\n", a, b, res);
+                    printf("%s AND %s = %s\n", a, b, res);
                  }                 
 
                 break;
