@@ -176,9 +176,9 @@ char* F_DecimalABin (int *valor){
 
     int i, aux;
     aux=*valor;
-    i=0;
+    i=log2(*valor);
 
-    for (i=12; i>=0; i--){
+    for (i; i>=0; i--){
         if (aux%2==1){
             res[i]='1';
         }
