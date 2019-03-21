@@ -4,8 +4,10 @@
 //-----------------------------------DESARROLLO DE LAS FUNCIONES DE LA CALCULADORA--------------------------------
 
 #include <stdio.h>
-#include "Mis_Funciones.h"
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
+#include "Mis_Funciones.h"
 
 //-----------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------HEXADECIMAL----------------------------------------------------
@@ -56,61 +58,74 @@ int F_DDE_HX(int* valor1){
 //----------------------------------------------------BINARIO------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------
 //Lee un valor en formato binario
-void F_LecturaBin (char** valor){
+void F_LecturaBin (char* valor){
     printf("Valor>>");
-    scanf("%c", *valor);
+    scanf("%s", valor);
+    fflush(stdin);
+
 }                 
 
 //Hace la operación OR de los parametros bi
-char F_OR_BI(char** valor1, char** valor2){
-    char* res;
+char* F_OR_BI(char *valor1, char *valor2){
+    char *res;
+    res = malloc (sizeof (char) * 12);
     int aux1, aux2, aux3;
-    aux1=F_BinarioADec(*valor1);
-    aux2=F_BinarioADec(*valor2);
+    aux1=F_BinarioADec(valor1);
+    aux2=F_BinarioADec(valor2);
     aux3= aux1 | aux2;
     res=F_DecimalABin(&aux3);
+    
     return res;
 }
 
+
 //Hace la operación AND de los parametros bi
-char F_AND_BI(char** valor1, char** valor2){
+char* F_AND_BI(char* valor1, char* valor2){
     char* res;
+    res = malloc (sizeof (char) * 12);
     int aux1, aux2, aux3;
-    aux1=F_BinarioADec(*valor1);
-    aux2=F_BinarioADec(*valor2);
+    aux1=F_BinarioADec(valor1);
+    aux2=F_BinarioADec(valor2);
     aux3= aux1 & aux2;
     res=F_DecimalABin(&aux3);
+
     return res;
 }
 
 //Hace la operación XOR de los parametros bi
-char F_XOR_BI(char** valor1, char** valor2){
+char* F_XOR_BI(char* valor1, char* valor2){
     char* res;
+    res = malloc (sizeof (char) * 12);
     int aux1, aux2, aux3;
-    aux1=F_BinarioADec(*valor1);
-    aux2=F_BinarioADec(*valor2);
+    aux1=F_BinarioADec(valor1);
+    aux2=F_BinarioADec(valor2);
     aux3= aux1 ^ aux2;
     res=F_DecimalABin(&aux3);
+
     return res;
 }
 
 //Desplaza a la izquerda el parametro bi
-char F_DIZ_BI(char** valor1){
+char* F_DIZ_BI(char* valor1){
     char* res;
+    res = malloc (sizeof (char) * 12);
     int aux1, aux2;
-    aux1=F_BinarioADec(*valor1);
+    aux1=F_BinarioADec(valor1);
     aux2= aux1 << 1;
-    res=F_DecimalABin;
+    res=F_DecimalABin(&aux2);
+
     return res;
 }
 
 //Desplaza a la derecha el parametro bi
-char F_DDE_BI(char** valor1){
+char* F_DDE_BI(char* valor1){
     char* res;
+    res = malloc (sizeof (char) * 12);
     int aux1, aux2;
-    aux1=F_BinarioADec(*valor1);
+    aux1=F_BinarioADec(valor1);
     aux2= aux1 >> 1;
-    res=F_DecimalABin;
+    res=F_DecimalABin(&aux2);
+
     return res;
 }
 
@@ -139,28 +154,37 @@ void F_CF(int* formato){
 }
 
 //Pasa de formato binario a formato decimal
-int F_BinarioADec (char **valor){
+int F_BinarioADec (char* valor){
     int res, i, tam;
-    tam=sizeof(*valor);
+    tam=strlen(valor);
     res=0;
 
     for (i=0; i<tam; i++){
-        if (*valor[i]==1){
+        if (valor[i]=='1'){
             res = res + pow (2, i);
         }
     }
-
+    
     return res;
 }
 
+
 //Pasa de formato decimal a formato binario
-char F_DecimalABin (int *valor){
-    char* res="";
+char* F_DecimalABin (int *valor){
+    char* res;
+    res = malloc (sizeof (char) * 12);
+
     int i, aux;
     aux=*valor;
+    i=0;
 
-    for (i=0; i<*valor; i++){
-        res[i]=aux%2;
+    for (i=12; i>=0; i--){
+        if (aux%2==1){
+            res[i]='1';
+        }
+        else if (aux%2==0){
+            res[i]='0';
+        }
         aux=aux/2;
     }
     

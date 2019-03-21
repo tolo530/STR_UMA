@@ -9,7 +9,7 @@
 int main (){
 
     int opcion;
-    int formato=1; //Hexadecimal por defecto
+    int formato=0; //Hexadecimal por defecto
 
     printf ("Introduce el tipo de operacion:\n"
               "1.- OR Logico\n"
@@ -26,7 +26,8 @@ int main (){
     do{
         printf("Tipo>> ");
         scanf ("%d", &opcion);
-
+        fflush(stdin);
+        
         switch (opcion){
         
              case 0:
@@ -46,10 +47,15 @@ int main (){
 
                  }
                  else if (formato==0){
-                    char a, b, res;
-                    F_LecturaBin(&a);
-                    F_LecturaBin(&b);
-                    res=F_OR_BI(&a, &b);
+                    char a[12];
+                    char b[12];
+                    char *res;
+
+                    F_LecturaBin(a);
+                    F_LecturaBin(b);
+                    
+                    res=F_OR_BI(a, b);
+                    
                     printf("%s OR %s = %s\n", a, b, res);
                  }
                  break;
@@ -66,10 +72,14 @@ int main (){
 
                  }
                  else if (formato==0){
-                    char a, b, res;
-                    F_LecturaBin(&a);
-                    F_LecturaBin(&b);
-                    res=F_AND_BI(&a, &b);
+                    char a[12];
+                    char b[12];
+                    char *res;
+
+                    F_LecturaBin(a);
+                    F_LecturaBin(b);
+
+                    res=F_AND_BI(a, b);
                     printf("%s OR %s = %s\n", a, b, res);
                  }                 
 
@@ -86,10 +96,15 @@ int main (){
 
                  }
                  else if (formato==0){
-                    char a, b, res;
-                    F_LecturaBin(&a);
-                    F_LecturaBin(&b);
-                    res=F_OR_BI(&a, &b);
+                    char a[12];
+                    char b[12];
+                    char *res;
+
+                    F_LecturaBin(a);
+                    F_LecturaBin(b);
+
+                    res=F_OR_BI(a, b);
+
                     printf("%s XOR %s = %s\n", a, b, res);
                  }
 
@@ -105,9 +120,10 @@ int main (){
 
                  }
                  else if (formato==0){
-                    char a, res;
-                    F_LecturaBin(&a);
-                    res=F_DIZ_BI(&a);
+                    char a[12];
+                    char *res;
+                    F_LecturaBin(a);
+                    res=F_DIZ_BI(a);
                     printf("%s << = %s\n", a, res);
                  }
 
@@ -123,9 +139,10 @@ int main (){
 
                  }
                  else if (formato==0){
-                    char a, res;
-                    F_LecturaBin(&a);
-                    res=F_DDE_BI(&a);
+                    char a[12];
+                    char *res;
+                    F_LecturaBin(a);
+                    res=F_DDE_BI(a);
                     printf("%s >> = %s\n", a, res);
                  }
                  break;
